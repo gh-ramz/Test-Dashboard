@@ -4,22 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>داشبورد گزارش تست سامانه Pivotal</title>
-    <!-- بارگذاری Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- بارگذاری Chart.js برای نمودار -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- فونت وزیرمتن -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS سفارشی حداقل شده: فقط برای فونت و تنظیمات Chart.js -->
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
             background-color: #f8fafc;
         }
-        /* تنظیم ابعاد ثابت برای نمودار دایره‌ای */
         .chart-container {
             position: relative;
             width: 100%;
@@ -35,33 +30,27 @@
     <div class="container mx-auto p-4 sm:p-6 md:p-8">
         
         <header class="mb-8 p-4 bg-white rounded-lg shadow-sm border-b-4 border-sky-500">
-            <h1 class="text-3xl font-extrabold text-slate-900">گزارش تست سامانه Pivotal</h1>
-            <p class="text-slate-500 mt-1">تهیه‌کننده: غزاله رمضانی | تاریخ: ۰۳/۰۷/۱۴۰۴</p>
+            <h1 class="text-3xl font-extrabold text-slate-900">گزارش تست سامانه Pivotal - patient.test</h1>
         </header>
 
         <main>
-            <!-- Section 1: High-Level Summary & Chart -->
             <section id="summary" class="mb-10">
                 <h2 class="text-2xl font-semibold mb-4 text-slate-900">خلاصه وضعیت کلی</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="col-span-1 md:col-span-2 lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                        <!-- Card: Total Tests -->
                         <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col justify-center items-center transform hover:scale-[1.02] transition duration-300">
                             <span class="text-5xl font-extrabold text-sky-600" id="total-tests">۲۶</span>
                             <span class="text-slate-500 mt-2 text-lg font-medium">کل سناریوها</span>
                         </div>
-                        <!-- Card: Passed Tests -->
                         <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col justify-center items-center transform hover:scale-[1.02] transition duration-300">
                             <span class="text-5xl font-extrabold text-green-600" id="passed-tests">۲۱</span>
                             <span class="text-slate-500 mt-2 text-lg font-medium">موفق (Passed)</span>
                         </div>
-                        <!-- Card: Failed Tests -->
                         <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col justify-center items-center transform hover:scale-[1.02] transition duration-300">
                             <span class="text-5xl font-extrabold text-red-600" id="failed-tests">۵</span>
                             <span class="text-slate-500 mt-2 text-lg font-medium">ناموفق (Failed)</span>
                         </div>
                     </div>
-                    <!-- Chart Card -->
                     <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col justify-center items-center">
                         <div class="chart-container">
                             <canvas id="testStatusChart"></canvas>
@@ -71,28 +60,23 @@
                 </div>
             </section>
             
-            <!-- Section 2: Key Findings & Recommendations -->
             <section id="findings" class="mb-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
                         <h2 class="text-2xl font-semibold mb-4 text-slate-900">مشکلات اصلی شناسایی شده</h2>
                         <div class="space-y-4">
-                            <!-- Critical Finding -->
                             <div class="bg-white p-4 rounded-xl shadow-lg border-r-8 border-red-700 hover:shadow-xl transition duration-300">
                                 <h3 class="font-bold text-red-800 text-lg">بحرانی: نقص در TeleChat و ارتباط (CORE-001)</h3>
                                 <p class="text-slate-600 text-sm mt-1">تماس آنلاین با فیزیوتراپیست با شکست مواجه می‌شود و امکان برقراری ارتباط وجود ندارد.</p>
                             </div>
-                            <!-- High Finding -->
                             <div class="bg-white p-4 rounded-xl shadow-lg border-r-8 border-red-500 hover:shadow-xl transition duration-300">
                                 <h3 class="font-bold text-red-600 text-lg">بالا: عدم به‌روزرسانی وضعیت تمرین (PLAN-008)</h3>
                                 <p class="text-slate-600 text-sm mt-1">وضعیت تمرین پس از اجرا به "Completed" تغییر نمی‌کند و این موضوع بر قابلیت گزارش‌دهی روزانه (Daily Note) تأثیر مستقیم دارد.</p>
                             </div>
-                            <!-- High Finding -->
                             <div class="bg-white p-4 rounded-xl shadow-lg border-r-8 border-orange-500 hover:shadow-xl transition duration-300">
                                 <h3 class="font-bold text-orange-600 text-lg">بالا: خطای دریافت اطلاعات چت (SUM-005)</h3>
                                 <p class="text-slate-600 text-sm mt-1">هنگام دریافت وضعیت TeleChat، خطای `error in fetch_database` رخ می‌دهد.</p>
                             </div>
-                            <!-- Medium Finding -->
                             <div class="bg-white p-4 rounded-xl shadow-lg border-r-8 border-yellow-500 hover:shadow-xl transition duration-300">
                                 <h3 class="font-bold text-yellow-600 text-lg">متوسط: نقص در اعتبارسنجی فیلد قد (REG-05)</h3>
                                 <p class="text-slate-600 text-sm mt-1">سیستم عدد صفر را به عنوان قد معتبر می‌پذیرد که منطقی نیست.</p>
@@ -102,22 +86,18 @@
                     <div>
                         <h2 class="text-2xl font-semibold mb-4 text-slate-900">پیشنهادها برای بهبود</h2>
                         <div class="space-y-4">
-                            <!-- Recommendation -->
                             <div class="bg-white p-4 rounded-xl shadow-lg border-l-8 border-sky-600 hover:shadow-xl transition duration-300">
                                 <h3 class="font-bold text-sky-700 text-lg">اولویت بحرانی: رفع مشکلات TeleChat</h3>
                                 <p class="text-slate-600 text-sm mt-1">مشکلات برقراری تماس آنلاین و خطای `fetch_database` باید فوراً رفع شوند تا ارتباط بیمار و فیزیوتراپیست مختل نشود.</p>
                             </div>
-                            <!-- Recommendation -->
                             <div class="bg-white p-4 rounded-xl shadow-lg border-l-8 border-sky-500 hover:shadow-xl transition duration-300">
                                 <h3 class="font-bold text-sky-600 text-lg">اولویت بالا: اصلاح منطق وضعیت تمرین</h3>
                                 <p class="text-slate-600 text-sm mt-1">اطمینان حاصل شود که وضعیت تمرین پس از اتمام به "Completed" تغییر کرده و امکان ثبت Daily Note فراهم شود.</p>
                             </div>
-                            <!-- Recommendation -->
                             <div class="bg-white p-4 rounded-xl shadow-lg border-l-8 border-cyan-500 hover:shadow-xl transition duration-300">
                                 <h3 class="font-bold text-cyan-600 text-lg">اولویت متوسط: تقویت اعتبارسنجی فیلد قد</h3>
                                 <p class="text-slate-600 text-sm mt-1">محدوده منطقی برای فیلد قد تعریف شود تا از پذیرش مقادیری مانند "صفر" جلوگیری شود.</p>
                             </div>
-                            <!-- Recommendation -->
                             <div class="bg-white p-4 rounded-xl shadow-lg border-l-8 border-teal-500 hover:shadow-xl transition duration-300">
                                 <h3 class="font-bold text-teal-600 text-lg">اولویت پایین: استانداردسازی پیام‌های خطا</h3>
                                 <p class="text-slate-600 text-sm mt-1">متن خطای مربوط به ایمیل تکراری (REG-08) استانداردسازی شود تا پیام واضح و کاربرپسندی نمایش داده شود.</p>
@@ -127,19 +107,16 @@
                 </div>
             </section>
 
-            <!-- Section 3: Detailed Test Results Table -->
             <section id="details">
                 <h2 class="text-2xl font-semibold mb-4 text-slate-900">نتایج تفصیلی تست</h2>
                 <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
                     <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-4 gap-4">
-                        <!-- Module Tabs -->
                         <div id="tabs" class="flex flex-wrap gap-2">
                             <button data-module="all" class="tab-btn px-4 py-2 text-sm rounded-lg font-semibold bg-sky-600 text-white hover:bg-sky-500 transition-colors">همه ماژول‌ها</button>
                             <button data-module="registration" class="tab-btn px-4 py-2 text-sm rounded-lg font-semibold bg-slate-200 text-slate-700 hover:bg-sky-500 hover:text-white transition-colors">صفحه ثبت‌نام</button>
                             <button data-module="exercise" class="tab-btn px-4 py-2 text-sm rounded-lg font-semibold bg-slate-200 text-slate-700 hover:bg-sky-500 hover:text-white transition-colors">صفحه ورزش کاربر</button>
                             <button data-module="summary" class="tab-btn px-4 py-2 text-sm rounded-lg font-semibold bg-slate-200 text-slate-700 hover:bg-sky-500 hover:text-white transition-colors">خلاصه وضعیت و ارزیابی</button>
                         </div>
-                        <!-- Status Filters -->
                         <div id="filters" class="flex flex-wrap gap-2 pt-2 xl:pt-0">
                             <button data-status="all" class="filter-btn px-3 py-1.5 text-xs rounded-lg font-semibold bg-cyan-700 text-white hover:bg-cyan-600 transition-colors">همه</button>
                             <button data-status="Passed" class="filter-btn px-3 py-1.5 text-xs rounded-lg font-semibold bg-slate-200 text-slate-600 hover:bg-cyan-600 hover:text-white transition-colors">موفق</button>
@@ -173,7 +150,6 @@
     </div>
 
     <script>
-        // داده‌های تست (بدون تغییر)
         const testData = [
             { id: 'REG-01', module: 'registration', description: 'ثبت‌نام با فیلدهای اجباری خالی.', actual: 'کاربر نمی‌تواند ثبت‌نام کند (پیام خطا نمایش داده شد).', status: 'Passed' },
             { id: 'REG-02', module: 'registration', description: 'ورود نام و نام خانوادگی نامعتبر (اعداد/کاراکترهای خاص).', actual: 'به کاربر خطا نشان داده می‌شود.', status: 'Passed' },
@@ -211,7 +187,6 @@
             const failedCount = testData.filter(t => t.status === 'Failed').length;
             const totalCount = testData.length;
             
-            // به‌روزرسانی کارت‌های خلاصه
             document.getElementById('total-tests').textContent = totalCount;
             document.getElementById('passed-tests').textContent = passedCount;
             document.getElementById('failed-tests').textContent = failedCount;
@@ -220,7 +195,6 @@
             renderChart(passedCount, failedCount);
             renderTable();
 
-            // مدیریت جابجایی تب‌ها (ماژول‌ها)
             document.getElementById('tabs').addEventListener('click', (e) => {
                 if (e.target.classList.contains('tab-btn')) {
                     const activeClasses = ['bg-sky-600', 'text-white'];
@@ -239,7 +213,6 @@
                 }
             });
 
-            // مدیریت فیلترهای وضعیت
             document.getElementById('filters').addEventListener('click', (e) => {
                 if (e.target.classList.contains('filter-btn')) {
                     // استفاده از bg-cyan-700 برای مطابقت با رنگ قبلی filter-active
@@ -260,7 +233,6 @@
             });
         });
 
-        // رندر نمودار Chart.js
         function renderChart(passed, failed) {
             const ctx = document.getElementById('testStatusChart').getContext('2d');
             new Chart(ctx, {
@@ -304,7 +276,6 @@
             });
         }
         
-        // رندر جدول نتایج بر اساس فیلترها و تب‌ها
         function renderTable() {
             const tableBody = document.getElementById('results-table');
             tableBody.innerHTML = '';
@@ -321,7 +292,6 @@
             }
 
             filteredData.forEach(item => {
-                // تعیین کلاس‌های Tailwind بر اساس وضعیت
                 const statusClass = item.status === 'Passed' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
                 const statusIcon = item.status === 'Passed' ? '✓' : '✗';
                 
@@ -343,4 +313,5 @@
     </script>
 </body>
 </html>
+
 
